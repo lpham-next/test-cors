@@ -54,6 +54,7 @@ export default function Home() {
         className="next-insurance-button"
         data-signature={signature}
         data-timestamp={timestamp}
+        data-env="sandbox"
         data-partner-request-id={customerId}
         data-affiliate-name={affiliateName}
       ></div>
