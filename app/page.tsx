@@ -8,13 +8,14 @@ export default function Home() {
   const [customerId, setCustomerId] = useState("");
   const [signature, setSignature] = useState("");
   const [timestamp, setTimestamp] = useState(0);
-  const [affiliateName, setAffiliateName] = useState("Tivly");
+  const [affiliateName, setAffiliateName] = useState("");
+  const [isStaging, setIsStaging] = useState(true);
 
   function loadScript() {
 
     const script = document.createElement("script");
 
-    script.src = "https://uat.nextinsurance.com/ni-sdk.bundle.js";
+    script.src = `https://${isStaging ? 'uat' : 'app'}.nextinsurance.com/ni-sdk.bundle.js`;
     script.async = true;
 
     document.body.appendChild(script);
@@ -48,6 +49,14 @@ export default function Home() {
         value={affiliateName}
         onChange={(e) => setAffiliateName(e.target.value)}
       />
+      <label style={{ marginRight: 20 }}>
+        <input
+          type="checkbox"
+          checked={isStaging}
+          onChange={(e) => setIsStaging(e.target.checked)}
+        ></input>
+        Staging
+      </label>
 
       <button onClick={onSubmit}>Launch</button>
       <div
